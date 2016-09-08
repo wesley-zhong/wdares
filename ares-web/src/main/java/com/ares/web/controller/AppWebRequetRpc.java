@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 
+import com.ares.app.constdata.Const;
 import com.ares.framework.rpc.WebRequestRpc;
 import com.ares.framework.rpc.context.RpcContext;
 import com.ares.service.exception.RunLogicException;
@@ -32,8 +33,8 @@ public class AppWebRequetRpc extends WebRequestRpc {
 		// System.out.println("content path = " + req.getPathInfo());
 		// System.out.println("content path = " + req.getPathTranslated());
 		RpcContext context = contextProvider.get();
-		//context.setAccountID((String) session.getAttribute(Const.ACOUNT_ID));
-		//context.setUserID((String) session.getAttribute(Const.USER_ID));
+		context.setAccountID((String) session.getAttribute(Const.ACOUNT_ID));
+		context.setUserID((String) session.getAttribute(Const.USER_ID));
 		context.setContentPath(req.getPathInfo());
 		context.setServerName(req.getServerName());
 		context.setPort(req.getServerPort());
