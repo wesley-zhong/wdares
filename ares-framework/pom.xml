@@ -174,13 +174,7 @@
 		</dependency>
 
 
-		<!-- Data Access -->
-
-		<dependency>
-			<groupId>com.couchbase.client</groupId>
-			<artifactId>java-client</artifactId>
-			<version>${couchase.client.version}</version>
-		</dependency>
+		<!-- Data Access --> 
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
