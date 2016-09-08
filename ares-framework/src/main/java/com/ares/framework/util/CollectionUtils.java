@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 
- * @author m.mcbride
+ *  @author wesley.zhong
  *
  */
 public class CollectionUtils {

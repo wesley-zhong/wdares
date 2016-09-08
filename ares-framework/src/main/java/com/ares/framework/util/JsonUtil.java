@@ -1,7 +1,7 @@
 package com.ares.framework.util;
 
-import com.ares.framework.dao.couchbase.transcoder.JsonObjectMapper;
 import com.ares.framework.domain.json.JsonDO;
+import com.ares.framework.json.transcoder.JsonObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class JsonUtil {

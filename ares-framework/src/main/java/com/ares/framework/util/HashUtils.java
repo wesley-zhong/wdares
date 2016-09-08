@@ -4,7 +4,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * 
- * @author m.mcbride
+ * @author wesley.zhong
  *
  */
 

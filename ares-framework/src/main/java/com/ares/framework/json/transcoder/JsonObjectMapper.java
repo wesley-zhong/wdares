@@ -1,4 +1,4 @@
-package com.ares.framework.dao.couchbase.transcoder;
+package com.ares.framework.json.transcoder;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

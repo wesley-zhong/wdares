@@ -3,7 +3,7 @@ package com.ares.framework.util;
 /**
  * Convenience methods for handling Enums.
  *
- * @author dadler
+ *  @author wesley.zhong
  */
 
 public class EnumUtils {

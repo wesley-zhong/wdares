@@ -1,7 +1,7 @@
 package com.ares.framework.util;
 
 /**
- * @author dadler
+ * @author wesley.zhong
  */
 public class StringUtils {
 

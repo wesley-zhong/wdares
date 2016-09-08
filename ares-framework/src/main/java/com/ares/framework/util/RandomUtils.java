@@ -2,7 +2,7 @@ package com.ares.framework.util;
 
 
 /**
- * @author brianj
+ * author wesley.zhong
  */
 public class RandomUtils {
 
