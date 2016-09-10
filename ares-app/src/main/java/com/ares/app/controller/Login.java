@@ -7,14 +7,16 @@
  *
 */
 
-package com.ares.app.cb.controller;
+package com.ares.app.controller;
 
 import org.springframework.stereotype.Component;
 
+import com.ares.app.DO.User;
+import com.ares.app.bean.request.UserLoginReq;
 import com.ares.framework.service.AresController;
 
 /**
- * ClassName:JServiceTest <br/>
+ * ClassName:LoginService <br/>
  * Function: TODO ADD FUNCTION. <br/>
  * Reason:	 TODO ADD REASON. <br/>
  * Date:     2016年6月3日 上午11:05:30 <br/>
@@ -25,7 +27,11 @@ import com.ares.framework.service.AresController;
  */
 
 @Component
-public class JServiceTest  implements AresController{
-
+public class Login  implements AresController{
+	
+	public User  onLogin(UserLoginReq  userLoginReq){		
+		User userInfo = new User();
+		return userInfo;
+	}
 }
 

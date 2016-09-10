@@ -1,4 +1,4 @@
-package com.ares.app;
+package com.ares.app.fortest;
 
 import java.io.BufferedReader;
 
@@ -52,7 +52,7 @@ public class ActionService {
 	@ResponseBody
 	public User OnjsonTest(@RequestBody User user)
 	{
-		System.out.println("UserName = "+user.getUserName());
+		//System.out.println("UserName = "+user.getUserName());
 		return user;
 	}
 	

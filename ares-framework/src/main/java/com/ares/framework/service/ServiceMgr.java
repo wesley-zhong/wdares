@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 public class ServiceMgr {
 
    @Inject
-   private List<AresController> jRpcServices;
+   private List<AresController> aresServices;
 		
 	@PostConstruct
 	public void Init(){
-		for(AresController  service : jRpcServices){
+		for(AresController  service : aresServices){
 			String serviceName = service.getClass().getSimpleName();
 			jServiceMaps.put(serviceName, service);
 		}

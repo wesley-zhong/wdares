@@ -1,4 +1,4 @@
-package com.ares.app.mysql.dao;
+package com.ares.app.dao;
 
 import java.util.List;
 
@@ -7,31 +7,31 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
-import com.ares.app.DO.MyUser;
+import com.ares.app.DO.User;
 import com.ares.framework.dao.mysql.MySqlBaseDAO;
 import com.ares.framework.dao.mysql.Table;
 
 
 @Component
 @Table("myuser")
-public class MyUserDAO extends MySqlBaseDAO<MyUser> {
-	public MyUserDAO(){
-		super(MyUser.class);
+public class UserDAO extends MySqlBaseDAO<User> {
+	public UserDAO(){
+		super(User.class);
 	}
 	
 	
 	
 	@PostConstruct
 	public void test(){
-		MyUser myUser = get(132);
+		User myUser = get(132);
 		myUser.setName("updated_name");
-		List<MyUser> myUserList = getList(132);
-		for(MyUser myUseri : myUserList){
+		List<User> myUserList = getList(132);
+		for(User myUseri : myUserList){
 			System.out.println("name = " + myUseri.getName());
 		}
 			
 		for(int i = 0 ; i < 10; i ++){
-			MyUser user = new MyUser();
+			User user = new User();
 		//	user.setName("test_"+ i);
 			//user.setUserid(i + 100);
 			myUser = get( 100  + i);
