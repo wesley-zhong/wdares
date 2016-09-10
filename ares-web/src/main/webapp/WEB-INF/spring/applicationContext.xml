@@ -33,7 +33,7 @@
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:game-default.properties</value>  
+                <value>classpath:ares-default.properties</value>  
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>

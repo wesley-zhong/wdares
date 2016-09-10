@@ -23,9 +23,9 @@
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:game-default.properties</value>
-                <value>classpath:game-${env}.properties</value>
-                <value>file:${user.home}/game.properties</value>
+                <value>classpath:ares-default.properties</value>
+                <value>classpath:ares-${env}.properties</value>
+                <value>file:${user.home}/ares.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>
