@@ -41,15 +41,15 @@ public class MySqlBaseDAO<T> {
 			throw new TableNameNullException( this.doClass.getSimpleName() +" table is null you should set like @Table(\"table_name\")");
 		}
 		this.tableName    = tableEntity.value();
-		logger.debug("table name:{}", tableName);
+		logger.info("table name:{}", tableName);
 		this.selectObjSql = DoSqlUtil.getSelectOneObjSql(doClass, tableName);
-		logger.debug("selectObjSql  :{}", selectObjSql);
+		logger.info("selectObjSql  :{}", selectObjSql);
 		this.insertObjSql = DoSqlUtil.getInsertSql(doClass, tableName);	
-		logger.debug("insertObjSql  :{}", insertObjSql);
+		logger.info("insertObjSql  :{}", insertObjSql);
 		this.updateObjSql = DoSqlUtil.getUpdateSql(doClass, tableName);
-		logger.debug("updateObjSql  :{}", updateObjSql);
-		deleteObjSql      = DoSqlUtil.getDeleteSql(doClass, tableName);	
-		logger.debug("deleteObjSql  :{}", deleteObjSql);
+		logger.info("updateObjSql  :{}", updateObjSql);
+		deleteObjSql  = DoSqlUtil.getDeleteSql(doClass, tableName);	
+		logger.info("deleteObjSql  :{}", deleteObjSql);
 	}
 
 	@SuppressWarnings("unchecked")

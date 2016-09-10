@@ -14,20 +14,20 @@ import org.springframework.stereotype.Component;
 public class ServiceMgr {
 
    @Inject
-   private List<JIService> jRpcServices;
+   private List<AresController> jRpcServices;
 		
 	@PostConstruct
 	public void Init(){
-		for(JIService  service : jRpcServices){
+		for(AresController  service : jRpcServices){
 			String serviceName = service.getClass().getSimpleName();
 			jServiceMaps.put(serviceName, service);
 		}
 	}
 	
   
-  public JIService  GetService(String serviceName){
+  public AresController  GetService(String serviceName){
 	  return jServiceMaps.get(serviceName);
   }
 	
-    private   Map<String,JIService>  jServiceMaps = new HashMap<>();
+    private   Map<String,AresController>  jServiceMaps = new HashMap<>();
 }

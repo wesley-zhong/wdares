@@ -11,7 +11,7 @@ package com.ares.app.cb.controller;
 
 import org.springframework.stereotype.Component;
 
-import com.ares.framework.service.JIService;
+import com.ares.framework.service.AresController;
 
 /**
  * ClassName:JServiceTest <br/>
@@ -25,7 +25,7 @@ import com.ares.framework.service.JIService;
  */
 
 @Component
-public class JServiceTest  implements JIService{
+public class JServiceTest  implements AresController{
 
 }
 

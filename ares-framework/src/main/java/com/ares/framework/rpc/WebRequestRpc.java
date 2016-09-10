@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import com.ares.framework.service.JIService;
+import com.ares.framework.service.AresController;
 import com.ares.framework.service.ServiceMgr;
 import com.ares.service.exception.RunLogicException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -36,20 +36,20 @@ public abstract class WebRequestRpc {
 	abstract public  void checkSession(HttpServletRequest req);
 	abstract public  void postProcess();//no use
 	
-	@RequestMapping(value = "/view/{serviceName}/{methodName}",method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/view/{serviceName}/{methodName}", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView   CallView(@PathVariable String serviceName,
 			@PathVariable String  methodName,Model model,HttpServletRequest req ,HttpServletResponse response) throws JsonParseException, JsonMappingException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, IOException, InstantiationException
 	{
 	
-		JIService service = serviceMgr.GetService(serviceName);
+		AresController service = serviceMgr.GetService(serviceName);
 		if(service == null){
-			model.addAttribute(ERROR_MSG_TAG, "can not find the service name :"+serviceName);
+			model.addAttribute(ERROR_MSG_TAG, "can not find the service name :" + serviceName);
 		    return new ModelAndView(ERROR_404);
 		}
 		
 		Method method = this.GetMethod(service, methodName);
 		if(method == null){
-			model.addAttribute(ERROR_MSG_TAG, "can not find the method:"+methodName+"in the service: "+serviceName);
+			model.addAttribute(ERROR_MSG_TAG, "can not find the method:" + methodName + "in the service: " + serviceName);
 			 return new ModelAndView(ERROR_404);
 		}
 		//call method
@@ -71,12 +71,12 @@ public abstract class WebRequestRpc {
 	}
 	
 	
-	@RequestMapping(value = "/rpc/{serviceName}/{methodName}",method = RequestMethod.POST )
+	@RequestMapping(value = "/rpc/{serviceName}/{methodName}", method = RequestMethod.POST )
 	@ResponseBody
 	public Object  CallRpc(@PathVariable String serviceName,
 			@PathVariable String  methodName, HttpServletRequest req ) throws JsonParseException, JsonMappingException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException, InstantiationException
 	{
-		JIService service = serviceMgr.GetService(serviceName);
+		AresController service = serviceMgr.GetService(serviceName);
 		if(service == null){
 		    return ERROR_404;
 		}
@@ -100,7 +100,7 @@ public abstract class WebRequestRpc {
 	}
 	
 	
-	private ViewResponse CallObjMethod(JIService service, Method method,
+	private ViewResponse CallObjMethod(AresController service, Method method,
 			Map<String, String[]> params, Model model)
 			throws NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException,
@@ -122,7 +122,7 @@ public abstract class WebRequestRpc {
 		return (ViewResponse) method.invoke(service, model);
 	}
 	
-	private  Object CallObjMethod(JIService service, Method method, Map<String,String[]> params) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, JsonParseException, JsonMappingException, IOException, InstantiationException
+	private  Object CallObjMethod(AresController service, Method method, Map<String,String[]> params) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, JsonParseException, JsonMappingException, IOException, InstantiationException
 	{
 		int paramCount =  method.getParameterCount();
 		if(paramCount > 0){
