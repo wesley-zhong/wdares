@@ -1,4 +1,4 @@
-package com.ares.app.service.exception;
+package com.ares.app.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

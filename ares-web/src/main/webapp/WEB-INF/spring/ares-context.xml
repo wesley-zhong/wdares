@@ -11,12 +11,12 @@
 
          
     <!-- Rpc Controllers -->
-    <context:component-scan base-package="com.ares.framework.dao.mysql" />
-    <context:component-scan base-package="com.ares.framework.service" />
-    <!--  <context:component-scan base-package="com.ares.framework.msg.publish" /> -->
     <context:component-scan base-package="com.ares.framework.rpc" /> 
-    <context:component-scan base-package="com.ares.app.mysql.dao" />
-    <context:component-scan base-package="com.ares.app.controller" /> 
-     <bean id="rpcContext" class="com.ares.framework.rpc.context.RpcContext" scope="request" /> 
+    <context:component-scan base-package="com.ares.framework.service" />
+    <context:component-scan base-package="com.ares.app.controller" />
+    <context:component-scan base-package="com.ares.app.service" /> 
+    <context:component-scan base-package="com.ares.app.dao" />
+    
+    <bean id="rpcContext" class="com.ares.framework.rpc.context.RpcContext" scope="request" /> 
 
 </beans>

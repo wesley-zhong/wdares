@@ -1,4 +1,4 @@
-package com.ares.app.service.exception;
+package com.ares.app.exception;
 
 /**
  * Exception thrown when the game client should be presented with a choice to 

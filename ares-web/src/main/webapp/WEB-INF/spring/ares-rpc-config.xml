@@ -9,8 +9,7 @@
 
    <mvc:annotation-driven>
         <mvc:message-converters>
-            <bean class="com.ares.framework.springhttp.MappingJacksonHttpMessageConverter"/>  
-            <bean class="com.ares.framework.springhttp.ProtobufHttpMessageConverter"/>  
+            <bean class="com.ares.framework.springhttp.MappingJacksonHttpMessageConverter"/>   
         </mvc:message-converters>
     </mvc:annotation-driven> 
         

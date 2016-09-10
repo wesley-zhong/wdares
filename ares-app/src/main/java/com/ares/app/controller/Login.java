@@ -9,10 +9,13 @@
 
 package com.ares.app.controller;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Component;
 
 import com.ares.app.DO.User;
 import com.ares.app.bean.request.UserLoginReq;
+import com.ares.app.service.UserLoginService;
 import com.ares.framework.service.AresController;
 
 /**
@@ -28,10 +31,11 @@ import com.ares.framework.service.AresController;
 
 @Component
 public class Login  implements AresController{
+	@Inject
+	private UserLoginService userLoginService;
 	
 	public User  onLogin(UserLoginReq  userLoginReq){		
-		User userInfo = new User();
-		return userInfo;
+		return  userLoginService.userLogin(userLoginReq);
 	}
 }
 

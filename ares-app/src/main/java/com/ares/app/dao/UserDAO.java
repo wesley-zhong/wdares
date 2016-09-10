@@ -21,7 +21,7 @@ public class UserDAO extends MySqlBaseDAO<User> {
 	
 	
 	
-	@PostConstruct
+	//@PostConstruct
 	public void test(){
 		User myUser = get(132);
 		myUser.setName("updated_name");
