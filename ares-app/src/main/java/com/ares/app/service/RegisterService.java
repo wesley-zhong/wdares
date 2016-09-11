@@ -4,6 +4,6 @@ import com.ares.app.DO.User;
 import com.ares.app.bean.request.UserRegisterReq;
 
 public interface RegisterService {
-	public User  register(UserRegisterReq userReigsterReq);
+	public User  register(UserRegisterReq userRegisterReq);
 
 }

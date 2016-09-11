@@ -9,14 +9,6 @@
 
 
 	<mvc:annotation-driven />
-	<!--
-        Order of precedence:
-        * System properties
-        * ~/game.properties
-        * classpath:game-{env}.properties (passing env as system property)
-        * game-default.properties
-    -->
-
 
     <!-- Rpc Controllers -->
    
