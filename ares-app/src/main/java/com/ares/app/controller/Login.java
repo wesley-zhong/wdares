@@ -19,7 +19,7 @@ import com.ares.app.service.UserLoginService;
 import com.ares.framework.service.AresController;
 
 /**
- * ClassName:LoginService <br/>
+ * ClassName:Login <br/>
  * Function: TODO ADD FUNCTION. <br/>
  * Reason:	 TODO ADD REASON. <br/>
  * Date:     2016年6月3日 上午11:05:30 <br/>

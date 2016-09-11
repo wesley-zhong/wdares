@@ -21,9 +21,9 @@ public class AuthenticationService implements UserDetailsService {
 
 	@Transactional
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException, DataAccessException {
  
-		
+		LOGGER.info("userName " + userName);
 		return null;
 	}
 }
