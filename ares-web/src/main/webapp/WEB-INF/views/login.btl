@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
-    <link href="/resources/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/flatui/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
       <!-- Loading Bootstrap -->
-    <link href="/resources/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/flatui/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 		  
     <!-- Loading Flat UI -->
-    <link href="/resources/css/flat-ui.min.css" rel="stylesheet">
+    <link href="/resources/flatui/css/flat-ui.min.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -23,10 +23,10 @@
       <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
     
-  <script src="/resources/js/vendor/jquery.min.js"></script>
-  <script src="/resources/js/flat-ui.min.js"></script>
-  <script src="/resources/js/assets/js/application.js"></script>
-  <script src="/resources/js/jquery.cookie.js"></script>
+  <script src="/resources/flatui/js/vendor/jquery.min.js"></script>
+  <script src="/resources/flatui/js/flat-ui.min.js"></script>
+  <script src="/resources/flatui/js/assets/js/application.js"></script>
+  <script src="/resources/flatui/js/jquery.cookie.js"></script>
   <script type="text/javascript">
 	$(function() { 
 		$("#login1").click(function() {

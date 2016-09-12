@@ -30,10 +30,13 @@
 	<mvc:view-controller path="/" view-name="login" />
     <mvc:view-controller path="/test" view-name="/test/page" />
     <mvc:view-controller path="default" view-name="default" />
+    <mvc:view-controller path="/index2" view-name="index2" />
+	<mvc:view-controller path="/edit" view-name="editor" />
 	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources -->
-	<mvc:resources mapping="/resources/**" location="/web-resources/flatui/" />
+	<mvc:resources mapping="/resources/**" location="/web-resources/" />
+    <mvc:resources mapping="/data/**" location="/data/" />
 	
 	<context:component-scan base-package="com.ares.web.controller" />
 	
