@@ -4,46 +4,48 @@
  * All right  reserved	
  * Created on 2016年6月22日 
  */
-package com.ares.framework.dao.mysql;
+package com.ares.framework.dao;
 /**
  *@author wesley E-mail:wiqi.zhong@gmail.com
  *
  */
-import java.sql.SQLException; 
-import java.util.ArrayList; 
-import java.util.List; 
-import java.util.Map; 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import javax.sql.DataSource; 
+import javax.sql.DataSource;
 
-
-
-
-import org.apache.commons.dbutils.QueryRunner; 
-import org.apache.commons.dbutils.handlers.BeanHandler; 
-import org.apache.commons.dbutils.handlers.BeanListHandler; 
-import org.apache.commons.dbutils.handlers.MapHandler; 
-import org.apache.commons.dbutils.handlers.MapListHandler; 
-import org.apache.commons.dbutils.handlers.ScalarHandler; 
-import org.apache.commons.logging.Log; 
-import org.apache.commons.logging.LogFactory; 
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import com.ares.service.exception.SqlExcException; 
 
 public class DbUtilsTemplate { 
-
-    private DataSource dataSource; 
     private QueryRunner queryRunner; 
-    private static final Log LOG = LogFactory.getLog(DbUtilsTemplate.class); 
+    public QueryRunner getQueryRunner() {
+		return queryRunner;
+	}
 
-    public void setDataSource(DataSource dataSource) { 
-        this.dataSource = dataSource; 
-    } 
+	public void setQueryRunner(QueryRunner queryRunner) {
+		this.queryRunner = queryRunner;
+	}
+
+	private static final Log LOG = LogFactory.getLog(DbUtilsTemplate.class); 
+
 
     /** 
      *
      * @param sql 
      * @return
+     * @throws SQLException 
      */ 
-    public int update(String sql) { 
+    public int update(String sql){ 
         return update(sql, null); 
     } 
       
@@ -55,6 +57,7 @@ public class DbUtilsTemplate {
      * @param sql sql
      * @param param 
      * @return 
+     * @throws SQLException 
      */ 
     public int update(String sql, Object param) { 
         return update(sql, new Object[] { param }); 
@@ -64,21 +67,22 @@ public class DbUtilsTemplate {
      * 
      * @param params 
      * @return 
+     * @throws SQLException 
      */ 
-    public int update(String sql, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
-        int affectedRows = 0; 
-        try { 
-            if (params == null) { 
-                affectedRows = queryRunner.update(sql); 
-            } else { 
-                affectedRows = queryRunner.update(sql, params); 
-            } 
-        } catch (SQLException e) { 
-            LOG.error("Error occured while attempting to update data", e); 
-        } 
-        return affectedRows; 
-    } 
+	public int update(String sql, Object[] params) {
+		int affectedRows = 0;
+		try {
+
+			if (params == null) {
+				affectedRows = queryRunner.update(sql);
+			} else {
+				affectedRows = queryRunner.update(sql, params);
+			}
+		} catch (SQLException e) {
+			throw new SqlExcException(e.getMessage());
+		}
+		return affectedRows;
+	} 
       
     /** 
      * @param sql sql
@@ -86,7 +90,7 @@ public class DbUtilsTemplate {
      * @return 
      */ 
     public int[] batchUpdate(String sql, Object[][] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+      //  queryRunner = new QueryRunner(dataSource); 
         int[] affectedRows = new int[0]; 
         try { 
             affectedRows = queryRunner.batch(sql, params); 
@@ -120,7 +124,7 @@ public class DbUtilsTemplate {
      * @return  
      */ 
     public List<Map<String, Object>> find(String sql, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+       // queryRunner = new QueryRunner(dataSource); 
         List<Map<String, Object>> list = new ArrayList<Map<String,Object>>(); 
         try { 
             if (params == null) { 
@@ -161,7 +165,7 @@ public class DbUtilsTemplate {
      */ 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public <T> List<T> find(Class<T> entityClass, String sql, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+      //  queryRunner = new QueryRunner(dataSource); 
         List<T> list = new ArrayList<T>(); 
         try { 
             if (params == null) { 
@@ -202,7 +206,7 @@ public class DbUtilsTemplate {
      */ 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public <T> T findFirst(Class<T> entityClass, String sql, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+      //  queryRunner = new QueryRunner(dataSource); 
         Object object = null; 
         try { 
             if (params == null) { 
@@ -240,7 +244,7 @@ public class DbUtilsTemplate {
      */ 
 
     public Map<String, Object> findFirst(String sql, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+      //  queryRunner = new QueryRunner(dataSource); 
         Map<String, Object> map = null; 
         try { 
             if (params == null) { 
@@ -281,7 +285,7 @@ public class DbUtilsTemplate {
      */ 
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object findBy(String sql, String columnName, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+      //  queryRunner = new QueryRunner(dataSource); 
         Object object = null; 
         try { 
             if (params == null) { 
@@ -322,7 +326,7 @@ public class DbUtilsTemplate {
      */ 
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object findBy(String sql, int columnIndex, Object[] params) { 
-        queryRunner = new QueryRunner(dataSource); 
+       // queryRunner = new QueryRunner(dataSource); 
         Object object = null; 
         try { 
             if (params == null) { 

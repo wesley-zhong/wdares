@@ -10,14 +10,13 @@
 
 	<mvc:annotation-driven />
 
-    <!-- Rpc Controllers -->
-   
+    <!-- Rpc Controllers --> 
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath:ares-default.properties</value>
                 <value>classpath:ares-${env}.properties</value>
-                <value>file:${user.home}/ares.properties</value>
+                <value>file:${user.home}/ares-pro.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>

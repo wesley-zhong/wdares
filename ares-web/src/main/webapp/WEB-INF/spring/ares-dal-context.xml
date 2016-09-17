@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<context:annotation-config />
+	<!-- base-package takes comma-separated values -->
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="mysql.dataSource"/>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<bean id="mysql.dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+		<!--  <property name="defaultAutoCommit" value="false"/> -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+	</bean>
+
+	<bean id="sqlserver.dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${msjdbc.driver}" />
+		<property name="url" value="${msjdbc.url}" />
+		<property name="username" value="${msjdbc.user}" />
+		<property name="password" value="${msjdbc.password}" />
+		<property name="maxActive" value="${msjdbc.maxActive}" />
+		<property name="maxIdle" value="${msjdbc.maxIdle}" />
+		<property name="minIdle" value="${msjdbc.minIdle}" />
+		<property name="initialSize" value="${msjdbc.initialSize}" />
+		<property name="maxWait" value="${msjdbc.maxWait}" />
+		<property name="validationQuery" value="${msjdbc.validationQuery}" />
+		<property name="testWhileIdle" value="${msjdbc.testWhileIdle}" />
+		<!--  <property name="defaultAutoCommit" value="false"/>-->
+		<property name="timeBetweenEvictionRunsMillis" value="${msjdbc.timeBetweenEvictionRunsMillis}" />
+	</bean>
+	
+	   <!-- mysql datasource proxy -->
+   <bean id ="mysql.proxyDataSource" class= "org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy" >
+         <constructor-arg >
+               <ref bean ="mysql.dataSource" />
+         </constructor-arg >
+   </bean >
+   
+   	   <!-- ms sqlserver datasource proxy -->
+   <bean id ="sqlserver.proxyDataSource" class= "org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy" >
+         <constructor-arg >
+               <ref bean ="sqlserver.dataSource" />
+         </constructor-arg >
+   </bean >
+	
+	   <!-- mysql runner-->
+   <bean id ="mysql.queryRunner" class= "org.apache.commons.dbutils.QueryRunner" >
+        <constructor-arg >
+               <ref bean ="mysql.proxyDataSource" />
+        </constructor-arg >
+   </bean >
+   
+   	   <!-- sqlserver runner-->
+   <bean id ="sqlserver.queryRunner" class= "org.apache.commons.dbutils.QueryRunner" >
+        <constructor-arg >
+               <ref bean ="sqlserver.proxyDataSource" />
+        </constructor-arg >
+   </bean >
+
+	<bean id="mysql.dbUtilsTemplate" class="com.ares.framework.dao.DbUtilsTemplate">
+		<property name="queryRunner" ref="mysql.queryRunner" />
+	</bean>
+
+	<bean id="sqlserver.dbUtilsTemplate" class="com.ares.framework.dao.DbUtilsTemplate">
+		<property name="queryRunner" ref="sqlserver.queryRunner" />
+	</bean>
+	
+   <context:component-scan base-package="com.ares.app.dao"/>
+
+</beans>

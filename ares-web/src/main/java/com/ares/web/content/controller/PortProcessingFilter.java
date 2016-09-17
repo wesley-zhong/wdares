@@ -16,7 +16,7 @@ import org.springframework.web.filter.GenericFilterBean;
 /**
  * Filter allows us to restrict access to the /services url for the configured port.
  * 
- * @author m.mcbride
+ * @author wesley.zhong
  *
  */
 public class PortProcessingFilter extends GenericFilterBean {
@@ -37,6 +37,4 @@ public class PortProcessingFilter extends GenericFilterBean {
 		}
 		chain.doFilter(request, response);
 	}
-
-
 }
