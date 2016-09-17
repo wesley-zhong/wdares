@@ -5,5 +5,6 @@ import com.ares.app.bean.request.UserLoginReq;
 
 public interface UserLoginService {
 	public User userLogin(UserLoginReq userLoginReq);
+	public void test();
 
 }

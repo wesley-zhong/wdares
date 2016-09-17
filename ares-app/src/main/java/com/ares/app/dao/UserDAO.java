@@ -1,41 +1,37 @@
 package com.ares.app.dao;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.ares.app.DO.User;
-import com.ares.framework.dao.mysql.MySqlBaseDAO;
-import com.ares.framework.dao.mysql.Table;
+import com.ares.framework.dao.Table;
+import com.ares.framework.dao.mysql.MysqlBaseDAO;
 
 
-@Component
-@Table("myuser")
-public class UserDAO extends MySqlBaseDAO<User> {
+
+@Repository  
+@Table("account")
+public class UserDAO extends MysqlBaseDAO<User> {
 	public UserDAO(){
 		super(User.class);
 	}
 	
 	
 	
-	//@PostConstruct
-	public void test(){
-		User myUser = get(132);
-		myUser.setName("updated_name");
-		List<User> myUserList = getList(132);
-		for(User myUseri : myUserList){
-			System.out.println("name = " + myUseri.getName());
-		}
+
+	public void test() {
+		List<User> userList = new ArrayList<User>();
 			
-		for(int i = 0 ; i < 10; i ++){
+		for(int i = 7; i   > 1; i --){
 			User user = new User();
-		//	user.setName("test_"+ i);
-			//user.setUserid(i + 100);
-			myUser = get( 100  + i);
-			System.out.println("=======ret " +  myUser.getName());
+			user.setNickName("test_"+ i);
+			user.setUserName("name_"+ i);
+			user.setUserId("userId _"+ i);
+			userList.add(user);
 		}
+		this.add(userList);
 	}
 }

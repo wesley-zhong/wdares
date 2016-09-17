@@ -9,6 +9,7 @@
 
 package com.ares.app.controller;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
@@ -33,9 +34,17 @@ import com.ares.framework.service.AresController;
 public class Login  implements AresController{
 	@Inject
 	private UserLoginService userLoginService;
+
 	
 	public User  onLogin(UserLoginReq  userLoginReq){		
 		return  userLoginService.userLogin(userLoginReq);
 	}
+	
+
+	public void test(){
+		userLoginService.test();
+	}
+	
+	
 }
 

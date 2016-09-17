@@ -7,7 +7,7 @@
  *
 */
 
-package com.ares.framework.dao.mysql;
+package com.ares.framework.dao;
 
 import java.lang.reflect.Field;
 
